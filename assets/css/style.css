@@ -320,7 +320,7 @@ h3 {
 } */
 
 #intro.section {
-  background: #a7ffeb repeat;
+  background: linear-gradient(135deg, #1F2A5B 0%, #304EAA 100%);
   position: relative;
 }
 
