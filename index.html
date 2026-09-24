@@ -154,7 +154,28 @@
   body.dark-mode a {
     color: #BFDBFE;
   }
+  body.dark-mode a {
+  color: #BFDBFE;
+}
+
+/* Paste the sidebar navigation fix here */
+body.dark-mode ul.side-nav.fixed.table-of-contents li:not(.logo) a span,
+body.dark-mode ul#slide-out li:not(.logo) a span,
+body.dark-mode ul.side-nav.fixed a,
+body.dark-mode ul#slide-out a,
+body.dark-mode ul.side-nav i {
+  color: #E5E7EB ;
+}
+
+body.dark-mode ul.table-of-contents li:not(.logo) a.active,
+body.dark-mode ul.table-of-contents li:not(.logo) a:hover,
+body.dark-mode ul#slide-out li:not(.logo) a:hover {
+  background-color: #334155 ;
+  border-left-color: #A5B4FC ;
+}
 </style>
+</style>
+
 </head>
 
 <body>
@@ -171,12 +192,6 @@
   <nav class="hide-on-small-only">
     <ul class="side-nav fixed section table-of-contents">
 
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar">
-        </a>
-      </li>
 
       <li class="bold">
         <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
@@ -205,7 +220,12 @@
         <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
             class="mdi-action-assessment small"></i><span>Skills</span></a>
       </li>
-      
+      <li class="bold">
+  <a aria-label="Navigate to the Places Travelled section" href="#places"
+    class="waves-effect waves-dark teal-text">
+    <i class="mdi-maps-place small"></i><span>Places Travelled</span>
+  </a>
+</li>
       <li class="bold">
         <!--
         ICONS:
