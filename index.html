@@ -658,8 +658,14 @@
             </div>
           </div>
 
-          <!-- ************* -->
-        </div>
+<div id="dynamic-projects" style="width: 100%;"></div>
+    <!-- Load more -->
+
+<div class="center-align" style="width: 100%; margin: 20px 0 40px;">
+  <button id="load-more-btn" class="btn waves-effect waves-light teal" type="button">
+    Load More
+  </button>
+</div>        </div>
       </div>
     </section>
 
@@ -953,6 +959,74 @@
       })
     })
   </script>
+  <script>
+  const projects = [
+    {
+      title: "SoilMate",
+      description: "An AI-enabled soil-nutrient analysis project using Vis-NIR spectroscopy.",
+      tools: "Python, Machine Learning, Vis-NIR Spectroscopy"
+    },
+    {
+      title: "Waste Classification AI",
+      description: "A PyTorch computer-vision model for classifying common waste materials.",
+      tools: "Python, PyTorch, CNNs"
+    },
+    {
+      title: "UniNav GIS Application",
+      description: "A C++ mapping and navigation application built using OpenStreetMap data across 14 cities.",
+      tools: "C++, OpenStreetMap, Graph Algorithms"
+    },
+    {
+      title: "Privacy Makeup & Facial Recognition",
+      description: "Capstone research evaluating how cosmetic modifications affect facial-recognition systems.",
+      tools: "InsightFace, ArcFace, FaceNet512, DBSCAN"
+    }
+  ];
+
+  let visibleProjectCount = 2;
+
+  const projectDisplay = document.getElementById("dynamic-projects");
+  const loadMoreButton = document.getElementById("load-more-btn");
+
+  // Hide the template's original static project cards.
+  document.querySelectorAll("#projects > .container > .row > .col").forEach(function(card) {
+    card.style.display = "none";
+  });
+
+  function renderProjects() {
+    const visibleProjects = projects.slice(0, visibleProjectCount);
+
+    projectDisplay.innerHTML = `
+      <div class="row">
+        ${visibleProjects.map(function(project) {
+          return `
+            <div class="col s12 m6 l6">
+              <div class="card medium">
+                <div class="card-content">
+                  <span class="card-title teal-text">${project.title}</span>
+                  <p>${project.description}</p>
+                  <br>
+                  <p><b>Tools:</b> ${project.tools}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+
+    if (visibleProjectCount >= projects.length) {
+      loadMoreButton.style.display = "none";
+    }
+  }
+
+  loadMoreButton.addEventListener("click", function() {
+    visibleProjectCount = projects.length;
+    renderProjects();
+  });
+
+  renderProjects();
+</script>
 </body>
 
 </html>
