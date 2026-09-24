@@ -70,9 +70,19 @@
   <style>
   /* Activity 3: navy and blue theme */
   #intro.section {
-    background: linear-gradient(135deg, #035ff3 0%, #035ff3 100%) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f7f7f8 100%) !important;
   }
+/* Black text at the top */
+#intro h2,
+#intro h2 .teal,
+#intro h5,
+#intro .typing {
+  color: #000000 !important;
+}
 
+#intro h2 .teal {
+  background-color: transparent !important;
+}
   .teal,
   .page-title {
     background-color: #035ff3 !important;
@@ -95,9 +105,81 @@
     background-color: #4169E1 !important;
   }
 </style>
+<style>
+  /* Dark-mode page colours */
+  body.dark-mode,
+  body.dark-mode main,
+  body.dark-mode main .section {
+    background: #111827 !important;
+    color: #E5E7EB !important;
+  }
+
+  body.dark-mode .card,
+  body.dark-mode .card-reveal,
+  body.dark-mode .side-nav,
+  body.dark-mode nav {
+    background: #1F2937 !important;
+    color: #E5E7EB !important;
+  }
+
+  body.dark-mode p,
+  body.dark-mode li,
+  body.dark-mode .card-content,
+  body.dark-mode .black-text {
+    color: #E5E7EB !important;
+  }
+
+  body.dark-mode .teal-text {
+    color: #A5B4FC !important;
+  }
+
+  /* Keep the top section white with black text in dark mode */
+  body.dark-mode #intro.section {
+    background: #ffffff !important;
+  }
+
+  body.dark-mode #intro h2,
+  body.dark-mode #intro h2 .teal,
+  body.dark-mode #intro h5,
+  body.dark-mode #intro .typing {
+    color: #000000 !important;
+  }
+
+  body.dark-mode #intro h2 .teal {
+    background-color: transparent !important;
+  }
+
+  /* Left navigation: white readable text in dark mode */
+  body.dark-mode ul.side-nav.fixed.table-of-contents li:not(.logo) a span,
+  body.dark-mode ul#slide-out li:not(.logo) a span,
+  body.dark-mode ul.side-nav.fixed a,
+  body.dark-mode ul#slide-out a,
+  body.dark-mode ul.side-nav i {
+    color: #E5E7EB !important;
+  }
+
+  body.dark-mode ul.table-of-contents li:not(.logo) a:hover,
+  body.dark-mode ul#slide-out li:not(.logo) a:hover {
+    background-color: #334155 !important;
+  }
+
+  #theme-toggle {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    border: 0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    background: #035ff3;
+    color: white;
+    cursor: pointer;
+  }
+</style>
 </head>
 
 <body>
+  <button id="theme-toggle" type="button"> Dark mode</button>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
   height="0" width="0" style="display:none;visibility:hidden"></iframe>
@@ -108,12 +190,7 @@
   <nav class="hide-on-small-only">
     <ul class="side-nav fixed section table-of-contents">
 
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar">
-        </a>
-      </li>
+      
 
       <li class="bold">
         <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
@@ -1026,6 +1103,22 @@
   });
 
   renderProjects();
+</script>
+
+<script>
+  const themeToggle = document.getElementById("theme-toggle");
+
+  function setDarkMode(enabled) {
+    document.body.classList.toggle("dark-mode", enabled);
+    themeToggle.textContent = enabled ? "☀️ Light mode" : "🌙 Dark mode";
+    localStorage.setItem("darkMode", enabled);
+  }
+
+  setDarkMode(localStorage.getItem("darkMode") === "true");
+
+  themeToggle.addEventListener("click", function () {
+    setDarkMode(!document.body.classList.contains("dark-mode"));
+  });
 </script>
 </body>
 
